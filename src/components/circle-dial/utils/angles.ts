@@ -12,7 +12,11 @@ export function angularDistance(a: number, b: number): number {
 
 export function normalizeAngle180(a: number): number {
   const w = wrap360(a);
-  return w > 180 ? w - 180 : w;
+  // Fold any angle into the [0, 180] range by mirroring values above 180
+  // around the 180° axis. Previously this subtracted 180 which produced
+  // incorrect results (e.g. 200° -> 20°). The correct mirror is 360 - w
+  // so 200° becomes 160° and 181° becomes 179°.
+  return w > 180 ? 360 - w : w;
 }
 
 export function normalizeSigned180(a: number): number {
