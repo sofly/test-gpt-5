@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import CircleDial from "./components/CircleDial";
 
