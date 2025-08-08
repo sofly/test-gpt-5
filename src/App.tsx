@@ -1,21 +1,13 @@
-import React from "react";
-import "./App.css";
-import CircleDial from "./components/CircleDial";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Circle from "./pages/Circle";
+import Voice from "./pages/Voice";
 
-function App() {
+export default function App() {
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        padding: 16,
-      }}
-    >
-      <CircleDial autoPlay />
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to="/circle" />} />
+      <Route path="/circle" element={<Circle />} />
+      <Route path="/voice" element={<Voice />} />
+    </Routes>
   );
 }
-
-export default App;
